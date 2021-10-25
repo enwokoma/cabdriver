@@ -1,13 +1,17 @@
 import 'dart:async';
 
 import 'package:cab_driver/app_widgets/brand_divider.dart';
+import 'package:cab_driver/app_widgets/progress_dialog.dart';
+import 'package:cab_driver/data_providers/app_data.dart';
 import 'package:cab_driver/helpers/helper_methods.dart';
 import 'package:cab_driver/screens/search_screen.dart';
 import 'package:cab_driver/utils/brand_colors.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -24,6 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
   double mapPaddingButtom = 0;
   Geolocator geoLocator = Geolocator();
   Position? currentPosition;
+
+  List<LatLng> polyLineCoordinates = [];
+  Set<Polyline> _polyLines = {};
 
   void _determinePosition() async {
     bool serviceEnabled;
@@ -84,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
             myLocationEnabled: true,
             initialCameraPosition: _kGooglePlex,
             myLocationButtonEnabled: true,
+            polylines: _polyLines,
             onMapCreated: (GoogleMapController controller){
               _controller.complete(controller);
               mapController = controller;
@@ -132,11 +140,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 20,),
 
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SearchScreen())
+                      onTap: () async{
+                        var response = await Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => const SearchScreen())
                         );
+
+                        if(response == 'getDirection'){
+                          await getDirection();
+                        }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -229,5 +240,52 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> getDirection() async{
+    var pickUp = Provider.of<AppData>(context, listen: false).pickUpAddress;
+    var destination = Provider.of<AppData>(context, listen: false).destinationAddress;
+
+    var pickUpLatLng = LatLng(pickUp!.latitude!, pickUp.longitude!);
+    var destinationLatLng = LatLng(destination!.latitude!, destination.longitude!);
+
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => const ProgressDialog(status: 'Please wait....')
+    );
+    var thisDetails = await HelperMethods.getDirectionDetails(pickUpLatLng, destinationLatLng);
+
+    Navigator.pop(context);
+
+    PolylinePoints polylinePoints = PolylinePoints();
+    List<PointLatLng> results = polylinePoints.decodePolyline(thisDetails!.encodedPoints!);
+
+    polyLineCoordinates.clear();
+
+    if(results.isNotEmpty){
+      results.forEach((PointLatLng point) {
+        polyLineCoordinates.add(LatLng(point.latitude, point.longitude));
+      });
+    }
+
+    _polyLines.clear();
+
+    setState(() {
+      Polyline polyline = Polyline(
+          polylineId: const PolylineId('polyid'),
+          color: const Color.fromARGB(255, 95, 109, 237),
+          points: polyLineCoordinates,
+          jointType: JointType.round,
+          width: 4,
+          startCap: Cap.roundCap,
+          endCap: Cap.roundCap,
+          geodesic: true
+      );
+
+      _polyLines.add(polyline);
+
+    });
+
   }
 }
