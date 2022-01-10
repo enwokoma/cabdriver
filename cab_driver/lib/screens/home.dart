@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:cab_driver/app_widgets/brand_divider.dart';
 import 'package:cab_driver/app_widgets/progress_dialog.dart';
 import 'package:cab_driver/data_providers/app_data.dart';
 import 'package:cab_driver/helpers/helper_methods.dart';
 import 'package:cab_driver/screens/search_screen.dart';
 import 'package:cab_driver/utils/brand_colors.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
@@ -31,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<LatLng> polyLineCoordinates = [];
   Set<Polyline> _polyLines = {};
+  Set<Marker> _markers = {};
+  Set<Circle> _circles = {};
 
   void _determinePosition() async {
     bool serviceEnabled;
@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children:  [
@@ -92,11 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
             initialCameraPosition: _kGooglePlex,
             myLocationButtonEnabled: true,
             polylines: _polyLines,
+            markers: _markers,
+            circles: _circles,
             onMapCreated: (GoogleMapController controller){
               _controller.complete(controller);
               mapController = controller;
               setState(() {
-                mapPaddingButtom = 270;
+                mapPaddingButtom = size.height * 0.38;
               });
               _determinePosition();
             },
@@ -284,6 +287,73 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
       _polyLines.add(polyline);
+
+    });
+
+    LatLngBounds bounds;
+
+    if(pickUpLatLng.latitude > destinationLatLng.latitude && pickUpLatLng.longitude > destinationLatLng.longitude){
+      bounds = LatLngBounds(southwest: destinationLatLng, northeast: pickUpLatLng);
+
+    }else if(pickUpLatLng.longitude > destinationLatLng.longitude){
+      bounds = LatLngBounds(
+          southwest: LatLng(pickUpLatLng.latitude, destinationLatLng.longitude),
+          northeast: LatLng(destinationLatLng.latitude, pickUpLatLng.longitude)
+      );
+    }else if(pickUpLatLng.latitude > destinationLatLng.latitude){
+      bounds = LatLngBounds(
+          southwest: LatLng(destinationLatLng.latitude, pickUpLatLng.longitude),
+          northeast: LatLng(pickUpLatLng.latitude, destinationLatLng.longitude),
+      );
+    }else{
+      bounds = LatLngBounds(
+          southwest: pickUpLatLng,
+          northeast: destinationLatLng);
+    }
+    
+    mapController!.animateCamera(CameraUpdate.newLatLngBounds(bounds, 70));
+
+
+    Marker pickUpMarker = Marker(
+        markerId: MarkerId('pickUp'),
+      position: pickUpLatLng,
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      infoWindow: InfoWindow(title: pickUp.placeName, snippet: 'My Location')
+    );
+
+    Marker destinationMarker = Marker(
+        markerId: MarkerId('destination'),
+        position: destinationLatLng,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+        infoWindow: InfoWindow(title: destination.placeName, snippet: 'Destination')
+    );
+
+    setState(() {
+      _markers.add(pickUpMarker);
+      _markers.add(destinationMarker);
+    });
+
+    Circle pickUpCircle = Circle(
+      circleId: CircleId('pickUp'),
+      strokeColor: Colors.green,
+      strokeWidth: 3,
+      radius: 12,
+      center: pickUpLatLng,
+      fillColor: BrandColors.colorGreen
+    );
+
+    Circle destinationCircle = Circle(
+        circleId: CircleId('destination'),
+        strokeColor: BrandColors.colorAccentPurple,
+        strokeWidth: 3,
+        radius: 12,
+        center: pickUpLatLng,
+        fillColor: BrandColors.colorAccentPurple
+    );
+
+    setState(() {
+      _circles.add(pickUpCircle);
+      _circles.add(destinationCircle);
 
     });
 
