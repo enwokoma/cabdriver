@@ -33,14 +33,14 @@ class OnboardingHome extends StatelessWidget {
                     children: [
                       Visibility(
                         child: Text(
-                          dlAppName,
+                          AppStrings.dlAppName,
                           style: dlMainAppSubNameStyle,
                         ),
                         visible: false,
                       ),
 
                       Text(
-                        dlAppName,
+                        AppStrings.dlAppName,
                         style: dlMainAppSubNameStyle,
                       ),
 
@@ -72,7 +72,7 @@ class OnboardingHome extends StatelessWidget {
                 ),
 
                 Positioned(
-                    bottom: 50,
+                    bottom: 30,
                     right: 18,
                     left: 18,
                     child: SizedBox(
@@ -81,7 +81,7 @@ class OnboardingHome extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            dlSkip,
+                            AppStrings.dlSkip,
                             style: dlButtonTextStyle,
                           ),
 

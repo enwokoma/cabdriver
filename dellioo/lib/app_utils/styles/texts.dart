@@ -26,3 +26,11 @@ TextStyle dlButtonTextStyle = GoogleFonts.dmSans(
     fontWeight: FontWeight.w600,
   ),
 );
+
+TextStyle dlTitleTextOne = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorWhite,
+    fontSize: 27,
+    fontWeight: FontWeight.w700,
+  ),
+);
