@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 'Dellioo',
-                style: mainAppNameStyle,
+                style: dlMainAppNameStyle,
               ),
             ),
             const Positioned(

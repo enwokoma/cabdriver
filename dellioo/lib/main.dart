@@ -1,3 +1,5 @@
+import 'package:dellioo/app_utils/styles/strings.dart';
+import 'package:dellioo/ui/views/onboarding/onboarding_home.dart';
 import 'package:dellioo/ui/views/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Dellioo',
-      home: SplashScreen(),
+      title: dlAppName,
+      home: OnboardingHome(),
     );
   }
 }

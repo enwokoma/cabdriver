@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class OnboardingOne extends StatelessWidget {
-  const OnboardingOne({Key? key}) : super(key: key);
+class OnboardingThree extends StatelessWidget {
+  const OnboardingThree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class OnboardingOne extends StatelessWidget {
           width: 270,
           height: 270,
           child: SvgPicture.asset(
-              'assets/images/vector/onboarding_first.svg'
+              'assets/images/vector/onboarding_third.svg'
           ),
         ),
       ],
