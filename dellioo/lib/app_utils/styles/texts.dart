@@ -34,3 +34,44 @@ TextStyle dlTitleTextOne = GoogleFonts.krub(
     fontWeight: FontWeight.w700,
   ),
 );
+
+TextStyle dlTitleTextTwo = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey1,
+    fontSize: 23,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle dlHeadLineTextOne = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey1,
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle dlSubBodyTextOne = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey2,
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle dlBodyTextOne = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey2,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+  ),
+);
+
+TextStyle dlHighlightButtonStyle = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorPrimary400,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+  ),
+);
+

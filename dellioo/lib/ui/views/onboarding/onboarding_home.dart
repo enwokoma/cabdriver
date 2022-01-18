@@ -3,10 +3,12 @@ import 'package:dellioo/app_utils/styles/strings.dart';
 import 'package:dellioo/app_utils/styles/texts.dart';
 import 'package:dellioo/app_utils/widgets/buttons/action_button.dart';
 import 'package:dellioo/ui/base/base_view.dart';
+import 'package:dellioo/ui/views/auth/sign_up/enter_mobile_number.dart';
 import 'package:dellioo/ui/views/onboarding/onboarding_one.dart';
 import 'package:dellioo/ui/views/onboarding/onboarding_three.dart';
 import 'package:dellioo/ui/views/onboarding/onboarding_two.dart';
 import 'package:dellioo/ui/views/onboarding/view_model.dart';
+import 'package:dellioo/utils/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -86,22 +88,32 @@ class OnboardingHome extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            AppStrings.dlSkip,
-                            style: dlButtonTextStyle,
+                          InkWell(
+                            onTap: (){
+                              model.changePage(2);
+                            },
+                            child: Text(
+                              AppStrings.dlSkip,
+                              style: dlButtonTextStyle,
+                            ),
                           ),
 
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: dlColorWhite
-                            ),
-                            child: const Icon(
-                              Icons.arrow_forward,
-                              color: dlColorPrimary400,
-                              size: 18,
+                          GestureDetector(
+                            onTap: (){
+                              model.nextPage();
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: dlColorWhite
+                              ),
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                color: dlColorPrimary400,
+                                size: 18,
+                              ),
                             ),
                           ),
                         ],
@@ -117,7 +129,12 @@ class OnboardingHome extends StatelessWidget {
                     text: 'Get Started',
                     color: dlColorWhite,
                     textColor: dlColorPrimary400,
-                    onPressed: null,
+                    onPressed: (){
+                      navigate(
+                          context!,
+                          const EnterMobileNumber()
+                      );
+                    },
                   ),
                 )
               ],

@@ -17,7 +17,7 @@ class ActionButton extends StatelessWidget {
   final Color? disabledColor;
   final Color disabledTextColor;
 
-  ActionButton({
+  const ActionButton({
     Key? key,
     @required this.text,
     @required this.onPressed,
@@ -26,7 +26,7 @@ class ActionButton extends StatelessWidget {
     this.textColor = dlColorWhite,
     this.icon,
     this.borderRadius = 12.0,
-    this.height = 50.0,
+    this.height = 64.0,
     this.textFontSize = 16.0,
     this.isLoading = false,
     this.disabledColor = dlColorBlackGrey5,
@@ -40,12 +40,11 @@ class ActionButton extends StatelessWidget {
       alignment: Alignment.center,
       child: Opacity(
         opacity: disabled ? .8 : 1,
-        child: Container(
+        child: SizedBox(
           height: height,
-          // width: MediaQuery.of(context).size.width * .7,
-          child: FlatButton(
+          child: MaterialButton(
             onPressed: (){
-              disabled || isLoading ? null : onPressed;
+              disabled || isLoading ? null : onPressed!();
             },
             disabledColor: disabledColor ?? color,
             color: disabled ? disabledColor : color,

@@ -40,4 +40,10 @@ class OnboardingViewModel extends BaseViewModel{
         curve: Curves.easeIn
     );
   }
+  void changePage(int page){
+    pageController.animateToPage(
+        page,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeIn);
+  }
 }
