@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 class OnboardingViewModel extends BaseViewModel{
   final PageController pageController = PageController();
 
+  bool _isLastPage = false;
+  bool get isLastPage => _isLastPage;
+  set isLastPage(bool val){
+    _isLastPage = val;
+    notifyListeners();
+  }
+
   void init(){
 
   }

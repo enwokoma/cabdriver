@@ -1,6 +1,7 @@
 import 'package:dellioo/app_utils/styles/colors.dart';
 import 'package:dellioo/app_utils/styles/strings.dart';
 import 'package:dellioo/app_utils/styles/texts.dart';
+import 'package:dellioo/app_utils/widgets/buttons/action_button.dart';
 import 'package:dellioo/ui/base/base_view.dart';
 import 'package:dellioo/ui/views/onboarding/onboarding_one.dart';
 import 'package:dellioo/ui/views/onboarding/onboarding_three.dart';
@@ -68,9 +69,14 @@ class OnboardingHome extends StatelessWidget {
                       OnboardingTwo(),
                       OnboardingThree()
                     ],
+                    onPageChanged: (page){
+                      model.onPageChanged(page);
+                    },
                   ),
                 ),
 
+                model.currentPage != 2
+                ?
                 Positioned(
                     bottom: 30,
                     right: 18,
@@ -101,6 +107,18 @@ class OnboardingHome extends StatelessWidget {
                         ],
                       ),
                     )
+                )
+                    :
+                Positioned(
+                  bottom: 44,
+                  right: 28,
+                  left: 28,
+                  child: ActionButton(
+                    text: 'Get Started',
+                    color: dlColorWhite,
+                    textColor: dlColorPrimary400,
+                    onPressed: null,
+                  ),
                 )
               ],
             ),

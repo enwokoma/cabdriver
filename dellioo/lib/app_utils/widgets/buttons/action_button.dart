@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class ActionButton extends StatelessWidget {
   final Function? onPressed;
   final Color color;
-  final Color textColor;
+  final Color? textColor;
   final String? text;
   final bool disabled;
   final Widget? icon;
@@ -14,7 +14,7 @@ class ActionButton extends StatelessWidget {
   final double height;
   final double textFontSize;
   final bool isLoading;
-  final Color disabledColor;
+  final Color? disabledColor;
   final Color disabledTextColor;
 
   ActionButton({
