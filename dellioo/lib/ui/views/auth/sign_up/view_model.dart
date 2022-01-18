@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class SignUpViewModel extends BaseViewModel{
 
   FocusNode focusNode = FocusNode();
+  FocusNode lastNameFocusNode = FocusNode();
 
   Color _borderColor = Colors.transparent;
   Color get borderColor => _borderColor;
@@ -13,8 +14,16 @@ class SignUpViewModel extends BaseViewModel{
     notifyListeners();
   }
 
+  Color _lastNameBorderColor = Colors.transparent;
+  Color get lastNameBorderColor => _lastNameBorderColor;
+  set lastNameBorderColor(Color val) {
+    _lastNameBorderColor = val;
+    notifyListeners();
+  }
+
   init(){
     focusNode.addListener(onFocusChanged);
+    lastNameFocusNode.addListener(onLastNameFocusChanged);
   }
 
   onFocusChanged(){
@@ -22,6 +31,14 @@ class SignUpViewModel extends BaseViewModel{
       borderColor = dlColorPrimary400;
     } else {
       borderColor = Colors.transparent;
+    }
+  }
+
+  onLastNameFocusChanged(){
+    if(lastNameFocusNode.hasFocus){
+      lastNameBorderColor = dlColorPrimary400;
+    }else{
+      lastNameBorderColor = Colors.transparent;
     }
   }
   @override

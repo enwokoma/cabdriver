@@ -12,4 +12,8 @@ class AppStrings{
   static String dlMobileNumberInfoText = 'By continuing you may receive an SMS for verification. Message and data rates may apply.';
   static String dlResend = 'Resend';
   static String dlCancel= 'Cancel';
+  static String dlWhatIsYourName = "What's your\nname";
+  static String dlWhatIsYourEmail = "What's your\nemail";
+  static String dlConfirmItIsYou = "Courier will be able to confirm its you upon arrival";
+  static String dlReceiptsAndRewards = "This is where we will send your receipts and rewards";
 }

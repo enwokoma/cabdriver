@@ -2,20 +2,15 @@ import 'package:dellioo/app_utils/styles/colors.dart';
 import 'package:dellioo/app_utils/styles/strings.dart';
 import 'package:dellioo/app_utils/styles/texts.dart';
 import 'package:dellioo/app_utils/widgets/buttons/action_button.dart';
-import 'package:dellioo/app_utils/widgets/modals/app_modal.dart';
 import 'package:dellioo/app_utils/widgets/textfields/app_text_field.dart';
 import 'package:dellioo/ui/base/base_view.dart';
-import 'package:dellioo/ui/views/auth/modals/resend_code_modal.dart';
 import 'package:dellioo/ui/views/auth/sign_up/view_model.dart';
-import 'package:dellioo/ui/views/auth/sign_up/your_name.dart';
 import 'package:dellioo/utils/constants.dart';
-import 'package:dellioo/utils/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class VerificationCode extends StatelessWidget {
-  const VerificationCode({Key? key}) : super(key: key);
+class YourEmailScreen extends StatelessWidget {
+  const YourEmailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +51,7 @@ class VerificationCode extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            AppStrings.dlVerificationCode,
+                            AppStrings.dlWhatIsYourEmail,
                             style: dlHeadLineTextOne,
                             textAlign: TextAlign.left,
                           ),
@@ -70,21 +65,9 @@ class VerificationCode extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          RichText(
-                            textAlign: TextAlign.start,
-                            text: TextSpan(
-                                text: AppStrings.dlEnterVerificationCode,
-                                style: dlBodyTextOne,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: '(+234)07081453636',
-                                    style: GoogleFonts.krub(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 0.231,
-                                    ),
-                                  ),
-                                ]),
+                          Text(
+                            AppStrings.dlReceiptsAndRewards,
+                            style: dlBodyTextOne,
                           )
                         ],
                       ),
@@ -96,63 +79,28 @@ class VerificationCode extends StatelessWidget {
                       AppTextField(
                         focusNode: model!.focusNode,
                         borderColor: model.borderColor,
-                        hintText: 'Verification Code',
+                        hintText: 'Email Address',
+                      ),
+
+                      const SizedBox(
+                        height: 20,
                       ),
 
                       const SizedBox(
                         height: 16,
                       ),
-
-                      GestureDetector(
-                        onTap: (){
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) => AppModal(
-                                bigText: AppStrings.dlResendVerificationCode,
-                                mainButtonText: AppStrings.dlResend,
-                                highLightButtonText:AppStrings.dlCancel,
-                                subText: 'Verify your phone number',
-                                highLightButtonClicked: (){
-                                  Navigator.pop(context);
-                                },
-                                mainButtonClicked: (){
-                                  Navigator.pop(context);
-                                }
-                            ),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12),
-                                topRight: Radius.circular(12),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Resend Code in 0:14',
-                              style: TextStyle(
-                                color: dlColorBlackGrey3
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   ),
 
                   Visibility(
                     visible: !isKeyboardVisible,
-                    child:  Positioned(
+                    child: const Positioned(
                         bottom: 44,
                         right: 0,
                         left: 0,
                         child: ActionButton(
                           color: dlColorPrimary400,
-                          onPressed: (){
-                            navigate(context, const YourNameScreen());
-                          },
+                          onPressed: null,
                           text: 'Continue',
                         )
                     ),
