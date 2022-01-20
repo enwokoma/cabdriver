@@ -23,7 +23,7 @@ class HighLightActionButton extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(
                 color: dlColorPrimary300.withOpacity(.5), width: 1.8),
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(14)
         ),
         height: 64,
         width: getSize(context).width,

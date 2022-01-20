@@ -75,3 +75,19 @@ TextStyle dlHighlightButtonStyle = GoogleFonts.krub(
   ),
 );
 
+TextStyle dlTitleStyle = GoogleFonts.dmSans(
+  textStyle: const TextStyle(
+    color: dlColorPrimary400,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle dlTitleText4 = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey1,
+    fontSize: 23,
+    fontWeight: FontWeight.w400,
+  ),
+);
+

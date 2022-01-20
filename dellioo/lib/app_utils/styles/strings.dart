@@ -16,4 +16,14 @@ class AppStrings{
   static String dlWhatIsYourEmail = "What's your\nemail";
   static String dlConfirmItIsYou = "Courier will be able to confirm its you upon arrival";
   static String dlReceiptsAndRewards = "This is where we will send your receipts and rewards";
+  static String dlSetYourProfilePicture = 'Set your Profile\nPhoto';
+  static String dlAllowCameraAccess = 'Allow Camera Access';
+  static String dlUseCameraToTakePicture = 'We will use your camera to take a photo';
+  static String dlTurnOn = 'Turn On';
+  static String dlWelcomeMessage = 'Welcome to your one place delivery service';
+  static String dlCreatingAccount = 'Creating Account...';
+
+  static String profilePictureSubHeader = 'Your photo will be used by courier to '
+      'identify you for safer pickup.\n\nCourier can only view your photo during '
+      'delivery pick and will not be able to access it after delivery is completed.';
 }

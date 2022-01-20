@@ -13,6 +13,7 @@ class OnboardingViewModel extends BaseViewModel{
 
   void init(){
 
+    print('start');
   }
 
   int _currentPage = 0;

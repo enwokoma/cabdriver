@@ -25,7 +25,7 @@ class ActionButton extends StatelessWidget {
     this.color = dlColorPrimary400,
     this.textColor = dlColorWhite,
     this.icon,
-    this.borderRadius = 12.0,
+    this.borderRadius = 14.0,
     this.height = 64.0,
     this.textFontSize = 16.0,
     this.isLoading = false,

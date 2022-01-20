@@ -3,9 +3,14 @@ import 'package:dellioo/app_utils/styles/strings.dart';
 import 'package:dellioo/app_utils/styles/texts.dart';
 import 'package:dellioo/app_utils/widgets/buttons/action_button.dart';
 import 'package:dellioo/app_utils/widgets/textfields/app_text_field.dart';
+import 'package:dellioo/app_utils/widgets/top_bar.dart';
 import 'package:dellioo/ui/base/base_view.dart';
+import 'package:dellioo/ui/views/auth/sign_up/profile_photo.dart';
 import 'package:dellioo/ui/views/auth/sign_up/view_model.dart';
+import 'package:dellioo/ui/views/auth/sign_up/widgets/sub_header.dart';
+import 'package:dellioo/ui/views/auth/sign_up/widgets/title_header.dart';
 import 'package:dellioo/utils/constants.dart';
+import 'package:dellioo/utils/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
@@ -28,48 +33,26 @@ class YourEmailScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children:  [
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(
-                              Icons.arrow_back,
-                              color: dlColorPrimary400,
-                            ),
-                          ),
-                        ],
+                      AppTopBar(
+                        backButtonPressed: (){
+                          Navigator.pop(context);
+                        },
                       ),
 
                       const SizedBox(
                         height: 20,
                       ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppStrings.dlWhatIsYourEmail,
-                            style: dlHeadLineTextOne,
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
+                      TitleHeader(
+                        title:AppStrings.dlWhatIsYourEmail
                       ),
 
                       const SizedBox(
                         height: 6,
                       ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppStrings.dlReceiptsAndRewards,
-                            style: dlBodyTextOne,
-                          )
-                        ],
+                      SubHeader(
+                        subHeaderText: AppStrings.dlReceiptsAndRewards,
                       ),
 
                       const SizedBox(
@@ -94,13 +77,15 @@ class YourEmailScreen extends StatelessWidget {
 
                   Visibility(
                     visible: !isKeyboardVisible,
-                    child: const Positioned(
+                    child: Positioned(
                         bottom: 44,
                         right: 0,
                         left: 0,
                         child: ActionButton(
                           color: dlColorPrimary400,
-                          onPressed: null,
+                          onPressed: (){
+                            navigate(context, const ProfilePhotoScreen());
+                          },
                           text: 'Continue',
                         )
                     ),

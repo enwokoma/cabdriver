@@ -13,6 +13,7 @@ class AppModal extends StatelessWidget {
   final String? highLightButtonText;
   final Function? highLightButtonClicked;
   final Function? mainButtonClicked;
+  final double? height;
 
   const AppModal({
     Key? key,
@@ -21,14 +22,15 @@ class AppModal extends StatelessWidget {
     @required this.mainButtonText,
     @required this.highLightButtonText,
     @required this.highLightButtonClicked,
-    @required this.mainButtonClicked
+    @required this.mainButtonClicked,
+    @required this.height
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: getSize(context).width,
-      height: getSize(context).height * .4,
+      height: height,
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
         color: dlColorWhite,

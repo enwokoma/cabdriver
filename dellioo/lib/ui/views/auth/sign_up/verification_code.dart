@@ -115,6 +115,7 @@ class VerificationCode extends StatelessWidget {
                                 highLightButtonClicked: (){
                                   Navigator.pop(context);
                                 },
+                                height: getSize(context).height * .4,
                                 mainButtonClicked: (){
                                   Navigator.pop(context);
                                 }
