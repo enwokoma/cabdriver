@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:dellioo/app_utils/styles/colors.dart';
 import 'package:dellioo/app_utils/styles/strings.dart';
 import 'package:dellioo/app_utils/styles/texts.dart';
@@ -66,54 +67,63 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 20,),
-
+                    const SizedBox(
+                      height: 20,
+                    ),
                     AppTextField(
                       hintText: AppStrings.dlWhereTo,
                       prefixIcon: SizedBox(
                         width: 10,
                         height: 10,
                         child: SvgPicture.asset(
-                            'assets/images/vector/search_icon.svg',
+                          'assets/images/vector/search_icon.svg',
                         ),
                       ),
                     ),
-
-                    const SizedBox(height: 20,),
-
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       children: [
                         Text(
-                            AppStrings.dlFavourite,
+                          AppStrings.dlFavourite,
                           style: dlSubBodyTextOne,
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 20,),
-
+                    const SizedBox(
+                      height: 20,
+                    ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           FavouriteDestinationsWidget(
-                            icon: const Icon(Icons.add, color: dlColorBlackGrey2,),
+                            icon: const Icon(
+                              Icons.add,
+                              color: dlColorBlackGrey2,
+                            ),
                             text: AppStrings.dlAddNew,
                           ),
-
                           FavouriteDestinationsWidget(
-                            icon: const Icon(Icons.add, color: dlColorBlackGrey2,),
+                            icon: const Icon(
+                              Icons.add,
+                              color: dlColorBlackGrey2,
+                            ),
                             text: AppStrings.dlHome,
                           ),
-
                           FavouriteDestinationsWidget(
-                            icon: const Icon(Icons.add, color: dlColorBlackGrey2,),
+                            icon: const Icon(
+                              Icons.add,
+                              color: dlColorBlackGrey2,
+                            ),
                             text: AppStrings.dlWork,
                           ),
-
                           FavouriteDestinationsWidget(
-                            icon: const Icon(Icons.add, color: dlColorBlackGrey2,),
+                            icon: const Icon(
+                              Icons.add,
+                              color: dlColorBlackGrey2,
+                            ),
                             text: AppStrings.dlAddNew,
                           ),
                         ],
@@ -122,12 +132,63 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            Positioned(
+                top: 60,
+                left: 28,
+                child: Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: dlColorWhite,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                      Icons.menu,
+                    color: dlColorPrimary400,
+                  ),
+                )),
+
+            Positioned(
+                top: 60,
+                right: 28,
+                child: Badge(
+                  shape: BadgeShape.circle,
+                  badgeColor: dlColorRed,
+                  stackFit: StackFit.loose,
+                  padding: const EdgeInsets.all(8),
+                  position: BadgePosition.topEnd(end: -4, top: -10),
+                  badgeContent: const Text('1', style: TextStyle(color: Colors.white)),
+                  child: Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: dlColorWhite,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.notifications,
+                      color: dlColorBlackGrey1,
+                    ),
+                  ),
+                )),
           ],
         ),
       ),
     );
   }
 }
-
-

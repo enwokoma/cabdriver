@@ -18,6 +18,7 @@ const dlColorBlackGrey4 = Color(0xFFBEBEBE);
 const dlColorBlackGrey3 = Color(0xFF818181);
 const dlColorBlackGrey2 = Color(0xFF424242);
 const dlColorBlackGrey1 = Color(0xFF222222);
+const dlColorRed = Color(0xFFEB5757);
 
 //background
 const dlBackgroundColor = Color(0xFF898A8D);
