@@ -22,6 +22,11 @@ class AppStrings{
   static String dlTurnOn = 'Turn On';
   static String dlWelcomeMessage = 'Welcome to your one place delivery service';
   static String dlCreatingAccount = 'Creating Account...';
+  static String dlWhereTo = 'Where To?';
+  static String dlFavourite = 'Favourites';
+  static String dlAddNew = 'Add New';
+  static String dlHome = 'Home';
+  static String dlWork = 'Work';
 
   static String profilePictureSubHeader = 'Your photo will be used by courier to '
       'identify you for safer pickup.\n\nCourier can only view your photo during '

@@ -91,3 +91,19 @@ TextStyle dlTitleText4 = GoogleFonts.krub(
   ),
 );
 
+TextStyle dlTextFieldTextOne = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey3,
+    fontSize: 17,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle dlTitleTextFive = GoogleFonts.krub(
+  textStyle: const TextStyle(
+    color: dlColorBlackGrey1,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  ),
+);
+

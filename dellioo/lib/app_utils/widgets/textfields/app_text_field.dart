@@ -6,12 +6,16 @@ class AppTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final Color? borderColor;
   final String? hintText;
+  final Widget? prefixIcon;
+  final TextEditingController? controller;
 
   const AppTextField({
     Key? key,
     this.focusNode,
-    this.borderColor,
-    this.hintText
+    this.borderColor = Colors.transparent,
+    this.hintText,
+    this.prefixIcon,
+    this.controller
   }) : super(key: key);
 
   @override
@@ -27,9 +31,12 @@ class AppTextField extends StatelessWidget {
         child: TextField(
           focusNode: focusNode,
           cursorColor: dlColorBlackGrey1,
+          controller: controller,
           decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: hintText),
+              hintText: hintText,
+            prefixIcon: prefixIcon
+          ),
         ));
   }
 

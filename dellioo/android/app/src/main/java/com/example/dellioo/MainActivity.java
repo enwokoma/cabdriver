@@ -1,4 +1,4 @@
-package com.example.dellioo;
+package com.dellioo;
 
 import io.flutter.embedding.android.FlutterActivity;
 

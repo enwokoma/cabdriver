@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303950969539",
+    "project_id": "dellioo-user",
+    "storage_bucket": "dellioo-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303950969539:android:5a29285a5e556f0a114076",
+        "android_client_info": {
+          "package_name": "com.dellioo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303950969539-sr42i29th383d5ulls6d3l862vf13n00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAupHlGVhBRnaxDsKRVcr0-3dy0fdCPDus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303950969539-sr42i29th383d5ulls6d3l862vf13n00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
